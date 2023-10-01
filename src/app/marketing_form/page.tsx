@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK
 
@@ -13,16 +14,22 @@ const MarketingForm = () => {
         );
     }
 
+    const saveFormAndRedirect = () => {
+        // save form
+
+        redirect(paymentLink);
+    }
+
     return (
         <>
         <div className='h-screen flex flex-col justify-center items-center'>
             <div>whoa</div>
-            <Link
-                href={paymentLink}
+            <button
+                onClick={saveFormAndRedirect}
                 className='rounded-xl color-white bg-blue-500 p-4'
             >
                 submit
-            </Link>
+            </button>
         </div>
         </>
     );
