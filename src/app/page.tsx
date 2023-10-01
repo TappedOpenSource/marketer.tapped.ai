@@ -1,4 +1,5 @@
 
+import Partners from '@/components/partners';
 import Link from 'next/link';
 
 export default function Home() {
@@ -16,6 +17,8 @@ export default function Home() {
         href="/marketing_form"
         className="bg-white text-black font-black text-lg rounded-full px-4 py-2 hover:scale-105 transform transition-all duration-200 ease-in-out"
       >start now</Link>
+      <div className="h-4"></div>
+      <Partners />
     </main>
   )
 }
