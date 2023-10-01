@@ -14,23 +14,19 @@ const MarketingForm = () => {
         );
     }
 
-    const saveFormAndRedirect = () => {
-        // save form
-
-        redirect(paymentLink);
-    }
+    const uuid = '1234';
 
     return (
         <>
-        <div className='h-screen flex flex-col justify-center items-center'>
-            <div>whoa</div>
-            <button
-                onClick={saveFormAndRedirect}
-                className='rounded-xl color-white bg-blue-500 p-4'
-            >
-                submit
-            </button>
-        </div>
+            <div className='h-screen flex flex-col justify-center items-center'>
+                <div>whoa</div>
+                <Link
+                    href={`${paymentLink}?client_reference_id=1234`}
+                    className='rounded-xl color-white bg-blue-500 p-4'
+                >
+                    submit
+                </Link>
+            </div>
         </>
     );
 }
