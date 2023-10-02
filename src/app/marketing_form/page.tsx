@@ -7,8 +7,6 @@ import FormDataManager from '@/components/FormDataManager';
 import SegmentedLine from '@/components/SegmentedLine';
 import NameField from '@/components/application/name_field';
 import FollowingField from '@/components/application/following_field';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 import { track } from '@vercel/analytics';
 
