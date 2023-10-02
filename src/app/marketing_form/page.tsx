@@ -1,128 +1,125 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import FormDataManager from '@/components/FormDataManager';
 import SegmentedLine from '@/components/SegmentedLine';
+import { track } from '@vercel/analytics';
 import NameField from '@/components/application/name_field';
 import FollowingField from '@/components/application/following_field';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import MarketingField from '@/components/application/marketing_field';
+import AestheticField from '@/components/application/aesthetic_field';
+import AudienceField from '@/components/application/audience_field';
+import LeadingField from '@/components/application/leading_field';
+import TimelineField from '@/components/application/timeline_field';
+import BudgetField from '@/components/application/budget_field';
+import PaymentField from '@/components/application/payment_field';
 
-import { track } from '@vercel/analytics';
-
-const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK
+const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK;
 
 const MarketingForm: NextPage = () => {
-
   if (!paymentLink) {
-      return (
-          <div className='h-screen flex flex-col justify-center items-center'>
-              <div>whoa</div>
-              <div>no payment link</div>
-          </div>
-      );
+    return (
+      <div className='h-screen flex flex-col justify-center items-center'>
+        <div>whoa</div>
+        <div>no payment link</div>
+      </div>
+    );
   }
 
-  // const uuid = '1234';
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isValid, setIsValid] = useState(false);
   const router = useRouter();
+  const [formData, setFormData] = useState({});
 
-  const pages = [
+  const defaultPages = [
     NameField,
-    FollowingField
+    FollowingField,
+    MarketingField,
+    AestheticField,
+    AudienceField,
+    TimelineField,
+    BudgetField,
+    PaymentField,
   ];
-  const totalPages = pages.length;
-  const CurrentPage = pages[currentIndex];
 
-  const backgroundColor = '#3ba0fc';
+  const [pages, setPages] = useState(defaultPages);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const updatedPages = [...defaultPages];
+    if (formData['marketing_field'] === 'single') {
+      updatedPages.splice(3, 0, LeadingField);
+    }
+    setPages(updatedPages);
+  }, [formData['marketing_field']]);
+
+  useEffect(() => {
     setIsValid(false);
   }, [currentIndex]);
 
   const handleNextPage = () => {
     if (isValid) {
-      console.log(`${currentIndex}: next page`);
       track('next-question', {
         index: currentIndex,
-        question: CurrentPage.name,
+        question: pages[currentIndex].name,
       });
       setCurrentIndex((prev) => prev + 1);
     }
   };
+
   const handlePreviousPage = () => {
     if (currentIndex === 0) {
       router.push('/');
     } else {
-      console.log(`${currentIndex}: previous page`);
       setCurrentIndex((prev) => prev - 1);
     }
   };
 
-  if (totalPages <= 0) {
-    return (
-      <>
-        <h1>Form is empty</h1>
-      </>
-    );
+  if (pages.length <= 0) {
+    return <h1>Form is empty</h1>;
   }
 
   return (
-    <>
-      <div className={'flex min-h-screen flex-col items-center justify-center px-4 md:px-8 lg:px-16'} style={{ backgroundColor }}>
-        <div className="w-full max-w-screen-md mx-auto">
-          <SegmentedLine totalPages={totalPages} currentIndex={currentIndex} />
-          <FormDataManager>
-            {({ formData, updateFormData }) => {
-              return (
-                <>
-                  <CurrentPage
-                    formData={formData}
-                    updateFormData={updateFormData}
-                    onValidation={setIsValid}
-                  />
-                  <div className="flex justify-between mt-4 md:mt-8 lg:mt-16">
-                    <button
-                      className="tapped_btn_rounded"
-                      onClick={handlePreviousPage}
-                    >
-                      back
-                    </button>
+    <div className={'flex min-h-screen flex-col items-center justify-center px-4 md:px-8 lg:px-16'} style={{ backgroundColor: '#3ba0fc' }}>
+      <div className="w-full max-w-screen-md mx-auto">
+        <SegmentedLine totalPages={pages.length} currentIndex={currentIndex} />
+        <FormDataManager>
+          {({ formData: formDataFromManager, updateFormData }) => {
+            setFormData(formDataFromManager);
+            const CurrentPage = pages[currentIndex];
+            return (
+              <>
+                <CurrentPage
+                  formData={formDataFromManager}
+                  updateFormData={updateFormData}
+                  onValidation={setIsValid}
+                />
+                <div className="flex justify-between mt-4 md:mt-8 lg:mt-16">
+                  <button
+                    className="tapped_btn_rounded"
+                    onClick={handlePreviousPage}
+                  >
+                    back
+                  </button>
 
-                    {isValid && currentIndex !== totalPages - 1 && (
-                      <button
-                        className="tapped_btn_rounded_black"
-                        onClick={handleNextPage}
-                        disabled={!isValid}
-                      >
-                        next
-                      </button>
-                    )}
-                  </div>
-                </>
-              );
-            }}
-          </FormDataManager>
-        </div>
+                  {isValid && currentIndex !== pages.length - 1 && (
+                    <button
+                      className="tapped_btn_rounded_black"
+                      onClick={handleNextPage}
+                      disabled={!isValid}
+                    >
+                      next
+                    </button>
+                  )}
+                </div>
+              </>
+            );
+          }}
+        </FormDataManager>
       </div>
-    </>
+    </div>
   );
 };
-
-// return (
-//     <>
-//         <div className='h-screen flex flex-col justify-center items-center'>
-//             <div>whoa</div>
-//             <Link
-//                 href={`${paymentLink}?client_reference_id=1234`}
-//                 className='rounded-xl color-white bg-blue-500 p-4'
-//             >
-//                 submit
-//             </Link>
-//         </div>
-//     </>
 
 export default MarketingForm;

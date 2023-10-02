@@ -14,8 +14,6 @@ const FormDataManager = ({ children }) => {
     }));
   };
 
-  // console.log(formData);
-
   return children({ formData, updateFormData });
 };
 
