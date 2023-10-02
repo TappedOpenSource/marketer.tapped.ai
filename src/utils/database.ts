@@ -5,8 +5,8 @@ import type { MarketingPlan } from '@/types/marketing_plan';
 import { doc, setDoc, onSnapshot } from '@firebase/firestore';
 import { db } from '@/utils/firebase';
 
-const GUEST_PLANS_COLLECTION = 'guest_marketing_plans';
-const FORMS_COLLECTION = 'marketing_forms';
+const GUEST_PLANS_COLLECTION = 'guestMarketingPlans';
+const FORMS_COLLECTION = 'marketingForms';
 
 export function marketingPlanListener(
   clientReferenceId: string,
@@ -36,7 +36,6 @@ export async function createEmptyMarketingPlan({ clientReferenceId }: {
 
 export async function saveForm(form: MarketingForm) {
   console.log({ form });
-  // save form data to firestore
-  const docRef = doc(db, FORMS_COLLECTION, form.id);
+  const docRef = doc(db, `${FORMS_COLLECTION}/${form.id}`);
   await setDoc(docRef, form);
 }
