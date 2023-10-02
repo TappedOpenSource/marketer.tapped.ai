@@ -20,5 +20,5 @@ export default function Home() {
       <div className="h-4"></div>
       <Partners />
     </main>
-  )
+  );
 }

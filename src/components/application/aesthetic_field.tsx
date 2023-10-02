@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 const AestheticField = ({ formData, updateFormData, onValidation }) => {
   const [error, setError] = useState<string | null>(null);
-  let product = ''
+  let product = '';
 
   if (formData['marketing_field'] === 'single') {
-    product = 'single'
+    product = 'single';
   } else if (formData['marketing_field'] === 'EP') {
-    product = 'EP'
+    product = 'EP';
   } else {
-    product = 'album'
+    product = 'album';
   }
 
   const validateForUI = (value: string) => {
