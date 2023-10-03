@@ -53,37 +53,37 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
           />
         </div>
         {error && <p className="mt-2 text-red-500">{error}</p>}
-  
+
         <div className="grid w-full grid-cols-3 items-center my-4">
           <div className="h-px bg-gray-300"></div>
           <span className="text-center text-white">or</span>
           <div className="h-px bg-gray-300"></div>
         </div>
-  
+
         <div className="flex flex-col w-full">
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, leading_field: "an album" });
-              validateForUI("an album");
+              updateFormData({ ...formData, leading_field: 'an album' });
+              validateForUI('an album');
             }}
           >
             an album
           </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, leading_field: "a music video" });
-              validateForUI("a music video");
+              updateFormData({ ...formData, leading_field: 'a music video' });
+              validateForUI('a music video');
             }}
           >
             a music video
           </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, leading_field: "a tour" });
-              validateForUI("a tour");
+              updateFormData({ ...formData, leading_field: 'a tour' });
+              validateForUI('a tour');
             }}
           >
             a tour

@@ -53,46 +53,46 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
           />
         </div>
         {error && <p className="mt-2 text-red-500">{error}</p>}
-  
+
         <div className="grid w-full grid-cols-3 items-center my-4">
           <div className="h-px bg-gray-300"></div>
           <span className="text-center text-white">or</span>
           <div className="h-px bg-gray-300"></div>
         </div>
-  
+
         <div className="flex flex-col w-full">
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: "teenagers" });
-              validateForUI("teenagers");
+              updateFormData({ ...formData, audience_field: 'teenagers' });
+              validateForUI('teenagers');
             }}
           >
             teenagers
           </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: "college students" });
-              validateForUI("college students");
+              updateFormData({ ...formData, audience_field: 'college students' });
+              validateForUI('college students');
             }}
           >
             college students
           </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: "the suburbs" });
-              validateForUI("the suburbs");
+              updateFormData({ ...formData, audience_field: 'the suburbs' });
+              validateForUI('the suburbs');
             }}
           >
             the suburbs
           </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+          <button
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: "the city" });
-              validateForUI("the city");
+              updateFormData({ ...formData, audience_field: 'the city' });
+              validateForUI('the city');
             }}
           >
             the city
