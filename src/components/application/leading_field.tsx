@@ -1,34 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
 const LeadingField = ({ formData, updateFormData, onValidation }) => {
-  const [error, setError] = useState(null);
-  const [hasInteracted, setHasInteracted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleInputChange = (e) => {
-    setHasInteracted(true);
-
-    const { value } = e.target;
-    updateFormData({ ...formData, ['leading_field']: value });
-    validateForUI(value);
-  };
-
-  const validateForUI = (value) => {
-    if (hasInteracted) {
-      if (!value) {
-        setError('Please select an answer.');
-        onValidation(false);
-      } else {
-        setError(null);
-        onValidation(true);
-      }
+  const validateForUI = (value: string) => {
+    if (value.trim() === '') {
+      setError('field cannot be empty');
+      onValidation(false);
     } else {
       setError(null);
-      onValidation(false);
+      onValidation(true);
     }
   };
 
-  const justValidate = (value) => {
-    if (!value) {
+  const justValidate = (value: string) => {
+    if (value.trim() === '') {
       onValidation(false);
     } else {
       onValidation(true);
@@ -36,13 +22,17 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['leading_field']);
+    justValidate(formData['leading_field'] || '');
   }, [formData['leading_field']]);
 
-  const options = [
-    'yes',
-    'no',
-  ];
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    updateFormData({
+      ...formData,
+      [name]: value,
+    });
+    validateForUI(value);
+  };
 
   return (
     <div className="page flex h-full flex-col items-center justify-center">
@@ -50,32 +40,59 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
         <h1 className="mb-2 text-2xl font-bold text-white">
           is this leading to something bigger?
         </h1>
-        <div className="flex flex-wrap w-full justify-between">
-          {options.map((option) => (
-            <div key={option} className="w-1/2 flex items-center justify-center mb-4 pr-2">
-              <input
-                type="radio"
-                id={option}
-                name="leading_field"
-                value={option}
-                checked={formData['leading_field'] === option}
-                onChange={handleInputChange}
-                className="sr-only"
-              />
-              <label
-                htmlFor={option}
-                className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['leading_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
-              >
-                {option}
-              </label>
-            </div>
-          ))}
+        <div className="flex h-full w-full items-center justify-center">
+          <input
+            type="text"
+            name="leading_field"
+            placeholder="type here..."
+            value={formData['leading_field'] || ''}
+            onChange={handleInputChange}
+            className={`white_placeholder w-full appearance-none rounded ${
+              error ? 'border-2 border-red-500' : ''
+            } bg-[#63b2fd] px-4 py-2 leading-tight text-white focus:bg-white focus:text-black font-semibold focus:outline-none`}
+          />
         </div>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="mt-2 text-red-500">{error}</p>}
+  
+        <div className="grid w-full grid-cols-3 items-center my-4">
+          <div className="h-px bg-gray-300"></div>
+          <span className="text-center text-white">or</span>
+          <div className="h-px bg-gray-300"></div>
+        </div>
+  
+        <div className="flex flex-col w-full">
+          <button 
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+            onClick={() => {
+              updateFormData({ ...formData, leading_field: "an album" });
+              validateForUI("an album");
+            }}
+          >
+            an album
+          </button>
+          <button 
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+            onClick={() => {
+              updateFormData({ ...formData, leading_field: "a music video" });
+              validateForUI("a music video");
+            }}
+          >
+            a music video
+          </button>
+          <button 
+            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
+            onClick={() => {
+              updateFormData({ ...formData, leading_field: "a tour" });
+              validateForUI("a tour");
+            }}
+          >
+            a tour
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default LeadingField;
+

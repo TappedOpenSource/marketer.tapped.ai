@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-const AudienceField = ({ formData, updateFormData, onValidation }) => {
+const ProductNameField = ({ formData, updateFormData, onValidation }) => {
   const [error, setError] = useState<string | null>(null);
+  let product = ''
+
+  if (formData['marketing_field'] === 'single') {
+    product = 'single'
+  } else if (formData['marketing_field'] === 'EP') {
+    product = 'EP'
+  } else {
+    product = 'album'
+  }
 
   const validateForUI = (value: string) => {
     if (value.trim() === '') {
-      setError('Audience cannot be empty');
+      setError('Product name cannot be empty');
       onValidation(false);
     } else {
       setError(null);
@@ -22,8 +31,8 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['audience_field'] || '');
-  }, [formData['audience_field']]);
+    justValidate(formData['product_name'] || '');
+  }, [formData['product_name']]);
 
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
@@ -38,14 +47,14 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
     <div className="page flex h-full flex-col items-center justify-center">
       <div className="flex w-full flex-col items-start px-6">
         <h1 className="mb-2 text-2xl font-bold text-white">
-          do you have a target audience?
+          what is the name of the {product}?
         </h1>
         <div className="flex h-full w-full items-center justify-center">
           <input
             type="text"
-            name="audience_field"
+            name="product_name"
             placeholder="type here..."
-            value={formData['audience_field'] || ''}
+            value={formData['product_name'] || ''}
             onChange={handleInputChange}
             className={`white_placeholder w-full appearance-none rounded ${
               error ? 'border-2 border-red-500' : ''
@@ -64,38 +73,11 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
           <button 
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
             onClick={() => {
-              updateFormData({ ...formData, audience_field: "teenagers" });
-              validateForUI("teenagers");
+              updateFormData({ ...formData, product_name: "untitled" });
+              validateForUI("untitled");
             }}
           >
-            teenagers
-          </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
-            onClick={() => {
-              updateFormData({ ...formData, audience_field: "college students" });
-              validateForUI("college students");
-            }}
-          >
-            college students
-          </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
-            onClick={() => {
-              updateFormData({ ...formData, audience_field: "the suburbs" });
-              validateForUI("the suburbs");
-            }}
-          >
-            the suburbs
-          </button>
-          <button 
-            className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold" 
-            onClick={() => {
-              updateFormData({ ...formData, audience_field: "the city" });
-              validateForUI("the city");
-            }}
-          >
-            the city
+            untitled
           </button>
         </div>
       </div>
@@ -103,4 +85,4 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
   );
 };
 
-export default AudienceField;
+export default ProductNameField;

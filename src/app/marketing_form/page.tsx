@@ -15,6 +15,7 @@ import LeadingField from '@/components/application/leading_field';
 import TimelineField from '@/components/application/timeline_field';
 import BudgetField from '@/components/application/budget_field';
 import PaymentField from '@/components/application/payment_field';
+import ProductNameField from '@/components/application/product_name_field';
 
 const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK;
 
@@ -37,6 +38,7 @@ const MarketingForm: NextPage = () => {
     NameField,
     FollowingField,
     MarketingField,
+    ProductNameField,
     AestheticField,
     AudienceField,
     TimelineField,
@@ -80,8 +82,11 @@ const MarketingForm: NextPage = () => {
     return <h1>Form is empty</h1>;
   }
 
+  const paymentFieldIndex = pages.indexOf(PaymentField);
+  const backgroundColor = currentIndex === paymentFieldIndex ? '#15242d' : '#3ba0fc';
+
   return (
-    <div className={'flex min-h-screen flex-col items-center justify-center px-4 md:px-8 lg:px-16'} style={{ backgroundColor: '#3ba0fc' }}>
+    <div className={'flex min-h-screen flex-col items-center justify-center px-4 md:px-8 lg:px-16'} style={{ backgroundColor: backgroundColor }}>
       <div className="w-full max-w-screen-md mx-auto">
         <SegmentedLine totalPages={pages.length} currentIndex={currentIndex} />
         <FormDataManager>
