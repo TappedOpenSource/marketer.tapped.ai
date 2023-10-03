@@ -4,6 +4,7 @@ import type { MarketingPlan } from '@/types/marketing_plan';
 
 import { doc, collection, setDoc, onSnapshot } from '@firebase/firestore';
 import { db } from '@/utils/firebase';
+import { Timestamp } from 'firebase/firestore';
 
 const GUEST_PLANS_COLLECTION = 'guestMarketingPlans';
 const FORMS_COLLECTION = 'marketingForms';
@@ -39,7 +40,10 @@ export async function saveForm(form: MarketingForm) {
   try {
     const collectionRef = collection(db, FORMS_COLLECTION);
     const docRef = doc(collectionRef, form.id);
-    await setDoc(docRef, form);
+    await setDoc(docRef, {
+      ...form,
+      timestamp: Timestamp.now(),
+    });
   } catch (e) {
     console.error(e);
     throw e;

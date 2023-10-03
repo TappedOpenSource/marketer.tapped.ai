@@ -4,9 +4,9 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
   const [error, setError] = useState<string | null>(null);
   let product = '';
 
-  if (formData['marketing_field'] === 'single') {
+  if (formData['marketingType'] === 'single') {
     product = 'single';
-  } else if (formData['marketing_field'] === 'EP') {
+  } else if (formData['marketingType'] === 'EP') {
     product = 'EP';
   } else {
     product = 'album';

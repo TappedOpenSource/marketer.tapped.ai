@@ -39,9 +39,8 @@ const Results = () => {
   return (
     <div>
       <h1>Results</h1>
-      <div>{sessionId}</div>
-      <div>{marketingPlan?.status}</div>
-      <div>{marketingPlan?.content}</div>
+      <div>{marketingPlan.status}</div>
+      <div>{marketingPlan.content}</div>
     </div>
   );
 };

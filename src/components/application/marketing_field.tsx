@@ -8,7 +8,7 @@ const MarketingField = ({ formData, updateFormData, onValidation }) => {
     setHasInteracted(true);
 
     const { value } = e.target;
-    updateFormData({ ...formData, ['marketing_field']: value });
+    updateFormData({ ...formData, ['marketingType']: value });
     validateForUI(value);
   };
 
@@ -36,8 +36,8 @@ const MarketingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['marketing_field']);
-  }, [formData['marketing_field']]);
+    justValidate(formData['marketingType']);
+  }, [formData['marketingType']]);
 
   const options = [
     'single',
@@ -57,16 +57,16 @@ const MarketingField = ({ formData, updateFormData, onValidation }) => {
               <input
                 type="radio"
                 id={option}
-                name="marketing_field"
+                name="marketingType"
                 value={option}
-                checked={formData['marketing_field'] === option}
+                checked={formData['marketingType'] === option}
                 onChange={handleInputChange}
                 className="sr-only"
               />
               <label
                 htmlFor={option}
                 className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['marketing_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
+                ${formData['marketingType'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
               >
                 {option}
               </label>

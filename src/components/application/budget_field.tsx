@@ -8,7 +8,7 @@ const BudgetField = ({ formData, updateFormData, onValidation }) => {
     setHasInteracted(true);
 
     const { value } = e.target;
-    updateFormData({ ...formData, ['budget_field']: value });
+    updateFormData({ ...formData, ['budget']: value });
     validateForUI(value);
   };
 
@@ -36,8 +36,8 @@ const BudgetField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['budget_field']);
-  }, [formData['budget_field']]);
+    justValidate(formData['budget']);
+  }, [formData['budget']]);
 
   const options = [
     '$0',
@@ -60,16 +60,16 @@ const BudgetField = ({ formData, updateFormData, onValidation }) => {
               <input
                 type="radio"
                 id={option}
-                name="budget_field"
+                name="budget"
                 value={option}
-                checked={formData['budget_field'] === option}
+                checked={formData['budget'] === option}
                 onChange={handleInputChange}
                 className="sr-only"
               />
               <label
                 htmlFor={option}
                 className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['budget_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
+                ${formData['budget'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
               >
                 {option}
               </label>

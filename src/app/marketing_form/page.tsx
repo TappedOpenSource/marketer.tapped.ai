@@ -48,11 +48,11 @@ const MarketingForm: NextPage = () => {
 
   useEffect(() => {
     const updatedPages = [...defaultPages];
-    if (formData['marketing_field'] === 'single') {
+    if (formData['marketingType'] === 'single') {
       updatedPages.splice(3, 0, LeadingField);
     }
     setPages(updatedPages);
-  }, [formData['marketing_field']]);
+  }, [formData['marketingType']]);
 
   useEffect(() => {
     setIsValid(false);
