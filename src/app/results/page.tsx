@@ -18,6 +18,7 @@ const Results = () => {
   useEffect(() => {
     const fetchClientReferenceId = async () => {
       const clientReferenceId = await checkoutSessionToClientReferenceId(sessionId);
+      console.log({ clientReferenceId });
       marketingPlanListener(clientReferenceId, async (marketingPlan) => {
         setMarketingPlan(marketingPlan);
       });
