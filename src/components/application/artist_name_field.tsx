@@ -22,14 +22,14 @@ const NameField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['name'] || '');
-  }, [formData['name']]);
+    justValidate(formData['artistName'] || '');
+  }, [formData['artistName']]);
 
-  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
-    const { name, value } = e.target;
+  const handleInputChange = (e: { target: { value: any; }; }) => {
+    const { value } = e.target;
     updateFormData({
       ...formData,
-      [name]: value,
+      artistName: value,
     });
     validateForUI(value);
   };
@@ -43,9 +43,9 @@ const NameField = ({ formData, updateFormData, onValidation }) => {
         <div className="flex h-full w-full items-center justify-center">
           <input
             type="text"
-            name="name"
+            name="artistName"
             placeholder="type here..."
-            value={formData['name'] || ''}
+            value={formData['artistName'] || ''}
             onChange={handleInputChange}
             className={`white_placeholder w-full appearance-none rounded ${
               error ? 'border-2 border-red-500' : ''

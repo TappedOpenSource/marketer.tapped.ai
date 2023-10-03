@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import FormDataManager from '@/components/FormDataManager';
 import SegmentedLine from '@/components/SegmentedLine';
 import { track } from '@vercel/analytics';
-import NameField from '@/components/application/name_field';
+import NameField from '@/components/application/artist_name_field';
 import FollowingField from '@/components/application/following_field';
 import MarketingField from '@/components/application/marketing_field';
 import AestheticField from '@/components/application/aesthetic_field';

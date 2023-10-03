@@ -8,7 +8,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
     setHasInteracted(true);
 
     const { value } = e.target;
-    updateFormData({ ...formData, ['leading_field']: value });
+    updateFormData({ ...formData, ['moreToCome']: value });
     validateForUI(value);
   };
 
@@ -36,8 +36,8 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['leading_field']);
-  }, [formData['leading_field']]);
+    justValidate(formData['moreToCome']);
+  }, [formData['moreToCome']]);
 
   const options = [
     'yes',
@@ -56,16 +56,16 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
               <input
                 type="radio"
                 id={option}
-                name="leading_field"
+                name="moreToCome"
                 value={option}
-                checked={formData['leading_field'] === option}
+                checked={formData['moreToCome'] === option}
                 onChange={handleInputChange}
                 className="sr-only"
               />
               <label
                 htmlFor={option}
                 className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['leading_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
+                ${formData['moreToCome'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
               >
                 {option}
               </label>
