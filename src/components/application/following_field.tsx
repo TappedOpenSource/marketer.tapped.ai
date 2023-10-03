@@ -8,7 +8,7 @@ const FollowingField = ({ formData, updateFormData, onValidation }) => {
     setHasInteracted(true);
 
     const { value } = e.target;
-    updateFormData({ ...formData, ['following_field']: value });
+    updateFormData({ ...formData, ['socialFollowing']: value });
     validateForUI(value);
   };
 
@@ -36,8 +36,8 @@ const FollowingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['following_field']);
-  }, [formData['following_field']]);
+    justValidate(formData['socialFollowing']);
+  }, [formData['socialFollowing']]);
 
   const options = ['0-100', '100-1K', '1-10K', '10-100K', '100K-1M', '1M+'];
 
@@ -53,16 +53,16 @@ const FollowingField = ({ formData, updateFormData, onValidation }) => {
               <input
                 type="radio"
                 id={option}
-                name="following_field"
+                name="socialFollowing"
                 value={option}
-                checked={formData['following_field'] === option}
+                checked={formData['socialFollowing'] === option}
                 onChange={handleInputChange}
                 className="sr-only"
               />
               <label
                 htmlFor={option}
                 className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['following_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
+                ${formData['socialFollowing'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
               >
                 {option}
               </label>

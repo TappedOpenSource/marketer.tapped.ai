@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 const AestheticField = ({ formData, updateFormData, onValidation }) => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
   let product = ''
 
-  if (formData['marketing_field'] === 'single') {
-    product = 'single'
-  } else if (formData['marketing_field'] === 'EP') {
-    product = 'EP'
+  if (formData['marketingType'] === 'single') {
+    product = 'single';
+  } else if (formData['marketingType'] === 'EP') {
+    product = 'EP';
   } else {
-    product = 'album'
+    product = 'album';
   }
 
   const handleInputChange = (e) => {
@@ -62,7 +62,6 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
           what is the {product}'s aesthetic?
         </h1>
         
-        {/* New input field */}
         <input
           type="text"
           name="aesthetic_field"
@@ -72,14 +71,12 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
           className="w-full appearance-none rounded bg-[#63b2fd] px-4 py-2 mb-4 leading-tight text-white focus:bg-white focus:text-black font-semibold focus:outline-none"
         />
         
-        {/* Separator line with "or" */}
         <div className="grid w-full grid-cols-3 items-center my-4">
           <div className="h-px bg-gray-300"></div>
           <span className="text-center text-white">or</span>
           <div className="h-px bg-gray-300"></div>
         </div>
         
-        {/* Options */}
         <div className="flex flex-wrap w-full justify-between">
           {options.map((option) => (
             <div key={option} className="w-1/2 flex items-center justify-center mb-4 pr-2">

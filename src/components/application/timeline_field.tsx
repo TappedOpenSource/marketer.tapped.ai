@@ -8,7 +8,7 @@ const TimelineField = ({ formData, updateFormData, onValidation }) => {
     setHasInteracted(true);
 
     const { value } = e.target;
-    updateFormData({ ...formData, ['timeline_field']: value });
+    updateFormData({ ...formData, ['timeline']: value });
     validateForUI(value);
   };
 
@@ -36,8 +36,8 @@ const TimelineField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['timeline_field']);
-  }, [formData['timeline_field']]);
+    justValidate(formData['timeline']);
+  }, [formData['timeline']]);
 
   const options = [
     '1 week',
@@ -60,16 +60,16 @@ const TimelineField = ({ formData, updateFormData, onValidation }) => {
               <input
                 type="radio"
                 id={option}
-                name="timeline_field"
+                name="timeline"
                 value={option}
-                checked={formData['timeline_field'] === option}
+                checked={formData['timeline'] === option}
                 onChange={handleInputChange}
                 className="sr-only"
               />
               <label
                 htmlFor={option}
                 className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['timeline_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
+                ${formData['timeline'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
               >
                 {option}
               </label>
