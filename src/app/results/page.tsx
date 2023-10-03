@@ -25,12 +25,22 @@ const Results = () => {
     fetchClientReferenceId();
   }, []);
 
+  if (marketingPlan === null) {
+    return (
+      <div>
+        <h1>Results</h1>
+        <div>{sessionId}</div>
+        <div>loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>Results</h1>
       <div>{sessionId}</div>
-      <div>{marketingPlan.status}</div>
-      <div>{marketingPlan.content}</div>
+      <div>{marketingPlan?.status}</div>
+      <div>{marketingPlan?.content}</div>
     </div>
   );
 };
