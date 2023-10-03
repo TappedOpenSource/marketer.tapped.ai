@@ -2,7 +2,7 @@
 import type { MarketingForm } from '@/types/marketing_form';
 import type { MarketingPlan } from '@/types/marketing_plan';
 
-import { doc, setDoc, onSnapshot } from '@firebase/firestore';
+import { doc, collection, setDoc, onSnapshot } from '@firebase/firestore';
 import { db } from '@/utils/firebase';
 
 const GUEST_PLANS_COLLECTION = 'guestMarketingPlans';
@@ -36,6 +36,12 @@ export async function createEmptyMarketingPlan({ clientReferenceId }: {
 
 export async function saveForm(form: MarketingForm) {
   console.log({ form });
-  const docRef = doc(db, `${FORMS_COLLECTION}/${form.id}`);
-  await setDoc(docRef, form);
+  try {
+    const collectionRef = collection(db, FORMS_COLLECTION);
+    const docRef = doc(collectionRef, form.id);
+    await setDoc(docRef, form);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
 }
