@@ -5,7 +5,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
 
 
   const validateForUI = (value: string) => {
-    if (value.trim() === '') {
+    if (!value || value.trim() === '') {
       setError('field cannot be empty');
       onValidation(false);
     } else {
@@ -15,7 +15,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   const justValidate = (value: string) => {
-    if (value.trim() === '') {
+    if (!value || value.trim() === '') {
       onValidation(false);
     } else {
       onValidation(true);
@@ -23,6 +23,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
+    console.log(formData['moreToCome'])
     justValidate(formData['moreToCome']);
   }, [formData['moreToCome']]);
 
@@ -32,6 +33,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
       ...formData,
       [name]: value,
     });
+    console.log(value);
     validateForUI(value);
   };
 
@@ -44,9 +46,9 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
         <div className="flex h-full w-full items-center justify-center">
           <input
             type="text"
-            name="leading_field"
+            name="moreToCome"
             placeholder="type here..."
-            value={formData['leading_field'] || ''}
+            value={formData['moreToCome'] || ''}
             onChange={handleInputChange}
             className={`white_placeholder w-full appearance-none rounded ${
               error ? 'border-2 border-red-500' : ''
@@ -65,7 +67,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, leading_field: 'an album' });
+              updateFormData({ ...formData, moreToCome: 'an album' });
               validateForUI('an album');
             }}
           >
@@ -74,7 +76,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, leading_field: 'a music video' });
+              updateFormData({ ...formData, moreToCome: 'a music video' });
               validateForUI('a music video');
             }}
           >
@@ -83,7 +85,7 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, leading_field: 'a tour' });
+              updateFormData({ ...formData, moreToCome: 'a tour' });
               validateForUI('a tour');
             }}
           >
