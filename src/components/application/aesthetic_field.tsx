@@ -68,7 +68,9 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
           placeholder="type here..."
           onChange={handleInputChange}
           value={formData['aesthetic_field'] || ''}
-          className="w-full appearance-none rounded bg-[#63b2fd] px-4 py-2 mb-4 leading-tight text-white focus:bg-white focus:text-black font-semibold focus:outline-none"
+          className={`white_placeholder w-full appearance-none rounded ${
+            error ? 'border-2 border-red-500' : ''
+          } bg-[#63b2fd] px-4 py-2 leading-tight text-white focus:bg-white focus:text-black font-semibold focus:outline-none`}
         />
 
         <div className="grid w-full grid-cols-3 items-center my-4">
