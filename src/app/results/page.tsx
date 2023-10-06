@@ -16,6 +16,7 @@ const Results = () => {
   }
 
   const [marketingPlan, setMarketingPlan] = useState<MarketingPlan | null>(null);
+
   useEffect(() => {
     const fetchClientReferenceId = async () => {
       const clientReferenceId = await checkoutSessionToClientReferenceId(sessionId);
@@ -39,6 +40,40 @@ const Results = () => {
     );
   }
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+  function formatMarketingContent(content) {
+    console.log(content);
+    const sections = ['Introduction:', 'Target Audience:', 'Promotion Strategies:', 'Conclusion:'];
+    const formattedContent = [];
+
+    let startIndex = 0;
+    for (const section of sections) {
+      const endIndex = content.indexOf(section, startIndex + 1);
+      const sectionLimit = endIndex !== -1 ? endIndex : content.length;
+      const sectionContent = content.slice(startIndex, sectionLimit).trim();
+
+      if (sectionContent) {
+        const numericPoints = sectionContent.split(/\d+\./);
+        for (const numericPoint of numericPoints) {
+          if (numericPoint.trim()) {
+            const alphabeticPoints = numericPoint.split(/[a-z]\)/);
+            for (const alphabeticPoint of alphabeticPoints) {
+              if (alphabeticPoint.trim()) {
+                formattedContent.push(alphabeticPoint.trim());
+              }
+            }
+          }
+        }
+      }
+
+      startIndex = sectionLimit;
+    }
+
+    return formattedContent;
+  }
+
+  const formattedContent = formatMarketingContent(marketingPlan.content);
+
   return (
     <div className="px-24 pt-24">
       <div className="flex flex-row">
@@ -52,9 +87,13 @@ const Results = () => {
       </div>
       <div className='h-12'></div>
       <div className='bg-white p-8 rounded-md'>
-        <p className='text-black'>
-          {marketingPlan.content}
-        </p>
+        <div>
+          {formattedContent.map((paragraph, index) => (
+            <p key={index} className='text-black mb-4'>
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );
