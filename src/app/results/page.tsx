@@ -51,7 +51,11 @@ const Results = () => {
         </div>
       </div>
       <div className='h-12'></div>
-      <div>{marketingPlan.content}</div>
+      <div className='bg-white p-8 rounded-md'>
+        <p className='text-black'>
+          {marketingPlan.content}
+        </p>
+      </div>
     </div>
   );
 };
