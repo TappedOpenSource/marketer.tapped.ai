@@ -23,7 +23,6 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    console.log(formData['moreToCome'])
     justValidate(formData['moreToCome']);
   }, [formData['moreToCome']]);
 
@@ -33,7 +32,6 @@ const LeadingField = ({ formData, updateFormData, onValidation }) => {
       ...formData,
       [name]: value,
     });
-    console.log(value);
     validateForUI(value);
   };
 
