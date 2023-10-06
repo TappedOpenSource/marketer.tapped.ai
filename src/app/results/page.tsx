@@ -40,33 +40,28 @@ const Results = () => {
     );
   }
 
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   function formatMarketingContent(content) {
-    console.log(content);
-    const sections = ['Introduction:', 'Target Audience:', 'Promotion Strategies:', 'Conclusion:'];
     const formattedContent = [];
+    const sectionHeaders = ['Introduction:', '1. Target Audience:', '2. Online Presence and Branding:', '3. Content Marketing:', '4. Collaborations and Partnerships:', '5. Guerrilla Marketing and Street Promotion:', 'Conclusion:'];
 
-    let startIndex = 0;
-    for (const section of sections) {
-      const endIndex = content.indexOf(section, startIndex + 1);
-      const sectionLimit = endIndex !== -1 ? endIndex : content.length;
-      const sectionContent = content.slice(startIndex, sectionLimit).trim();
+    const mainSections = content.split(new RegExp(`(${sectionHeaders.join('|')})`));
 
-      if (sectionContent) {
-        const numericPoints = sectionContent.split(/\d+\./);
-        for (const numericPoint of numericPoints) {
-          if (numericPoint.trim()) {
-            const alphabeticPoints = numericPoint.split(/[a-z]\)/);
-            for (const alphabeticPoint of alphabeticPoints) {
-              if (alphabeticPoint.trim()) {
-                formattedContent.push(alphabeticPoint.trim());
-              }
-            }
+    for (let i = 0; i < mainSections.length; i++) {
+      const section = mainSections[i].trim();
+
+      if (sectionHeaders.includes(section)) {
+        formattedContent.push(section);
+      } else {
+        const bulletPoints = section.split('- ').filter((pt) => pt);
+        if (bulletPoints.length > 0) {
+          formattedContent.push(bulletPoints[0].trim());
+          for (let j = 1; j < bulletPoints.length; j++) {
+            formattedContent.push('- ' + bulletPoints[j].trim());
           }
+        } else {
+          formattedContent.push(section.trim());
         }
       }
-
-      startIndex = sectionLimit;
     }
 
     return formattedContent;
