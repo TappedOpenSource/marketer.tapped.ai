@@ -1,5 +1,6 @@
 'use client';
 
+import Loading from '@/components/loading';
 import { MarketingPlan } from '@/types/marketing_plan';
 import { checkoutSessionToClientReferenceId } from '@/utils/api';
 import { marketingPlanListener } from '@/utils/database';
@@ -28,18 +29,28 @@ const Results = () => {
 
   if (marketingPlan === null) {
     return (
-      <div>
-        <h1>Results</h1>
-        <div>{sessionId}</div>
-        <div>loading...</div>
-      </div>
+      <Loading />
+    );
+  }
+
+  if (marketingPlan.status === 'processing') {
+    return (
+      <Loading />
     );
   }
 
   return (
-    <div>
-      <h1>Results</h1>
-      <div>{marketingPlan.status}</div>
+    <div className="px-24 pt-24">
+      <div className="flex flex-row">
+        <h1 className="font-black text-4xl">Results</h1>
+        <div className='w-6'></div>
+        <div className="p-2 bg-green-500 text-white rounded-xl">
+          <p>
+            {marketingPlan.status}
+          </p>
+        </div>
+      </div>
+      <div className='h-12'></div>
       <div>{marketingPlan.content}</div>
     </div>
   );
