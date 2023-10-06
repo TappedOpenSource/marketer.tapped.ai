@@ -27,7 +27,7 @@ export default function Home() {
           }}
         ></div>
         <Link href="/marketing_form">
-          <div 
+          <div
             className="absolute w-[100px] h-[100px] rounded-full bg-white flex items-center justify-center text-[#63b2fd] font-bold cursor-pointer"
             style={{
               top: '-50px',
