@@ -5,6 +5,7 @@ module.exports = {
     node: true,
   },
   extends: [
+    'plugin:@next/next/recommended',
     'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
