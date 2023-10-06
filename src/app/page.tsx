@@ -19,7 +19,7 @@ export default function Home() {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-[100px] bg-[#63b2fd] relative">
-        <div 
+        <div
           className="absolute w-[150px] h-[75px] rounded-t-full bg-[#63b2fd]"
           style={{
             top: '-75px',
