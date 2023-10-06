@@ -11,16 +11,16 @@ export default function Home() {
         <h2 className="text-center font-semibold m-2">
           create your unique marketing plan and
         </h2>
-        <h1 className="text-4xl font-bold m-1 mb-2 text-[#1a5082] text-center">
+        <h1 className="text-4xl font-bold m-1 mb-2 text-[#63b2fd] text-center">
           get your music heard
         </h1>
 
         <Partners />
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-[100px] bg-white bg-opacity-10 relative">
+      <div className="absolute bottom-0 left-0 w-full h-[100px] bg-[#63b2fd] relative">
         <div 
-          className="absolute w-[150px] h-[75px] rounded-t-full bg-gray-700"
+          className="absolute w-[150px] h-[75px] rounded-t-full bg-[#63b2fd]"
           style={{
             top: "-75px",
             left: "calc(50% - 75px)"
@@ -28,7 +28,7 @@ export default function Home() {
         ></div>
         <Link href="/marketing_form">
           <div 
-            className="absolute w-[100px] h-[100px] rounded-full bg-[#63b2fd] flex items-center justify-center text-white font-bold cursor-pointer"
+            className="absolute w-[100px] h-[100px] rounded-full bg-white flex items-center justify-center text-[#63b2fd] font-bold cursor-pointer"
             style={{
               top: "-50px",
               left: "calc(50% - 50px)"
