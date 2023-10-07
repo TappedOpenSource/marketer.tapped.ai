@@ -1,6 +1,7 @@
 'use client';
 
 import Loading from '@/components/loading';
+import Processing from '@/components/processing';
 import { MarketingPlan } from '@/types/marketing_plan';
 import { checkoutSessionToClientReferenceId } from '@/utils/api';
 import { marketingPlanListener } from '@/utils/database';
@@ -37,22 +38,22 @@ const Results = () => {
 
   if (marketingPlan.status === 'processing') {
     return (
-      <Loading />
+      <Processing />
     );
   }
 
   return (
-    <div className="px-24 pt-24">
+    <div className="px-1 py-4 lg:px-24 lg:pt-24">
       <div className="flex flex-row">
         <h1 className="font-black text-4xl">Results</h1>
-        <div className='w-6'></div>
+        <div className='w-1 lg:w-6'></div>
         <div className="p-2 bg-green-500 text-white rounded-xl">
           <p>
             {marketingPlan.status}
           </p>
         </div>
       </div>
-      <div className='h-12'></div>
+      <div className='h-4 lg:h-12'></div>
       <div className='bg-white p-8 rounded-md'>
         <Markdown className="text-black" children={marketingPlan.content} />
       </div>
