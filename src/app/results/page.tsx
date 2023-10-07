@@ -39,7 +39,7 @@ const Results = () => {
       <Loading />
     );
   }
-
+  // get rid of title:, bold headers,  get rid of spaces between points
   function formatMarketingContent(content) {
     const formattedContent = [];
     const sectionHeaders = ['Introduction:', '1. Target Audience:', '2. Online Presence and Branding:', '3. Content Marketing:', '4. Collaborations and Partnerships:', '5. Guerrilla Marketing and Street Promotion:', 'Conclusion:'];
