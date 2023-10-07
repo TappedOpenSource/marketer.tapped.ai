@@ -16,6 +16,7 @@ const Results = () => {
   }
 
   const [marketingPlan, setMarketingPlan] = useState<MarketingPlan | null>(null);
+
   useEffect(() => {
     const fetchClientReferenceId = async () => {
       const clientReferenceId = await checkoutSessionToClientReferenceId(sessionId);
@@ -38,6 +39,35 @@ const Results = () => {
       <Loading />
     );
   }
+  // get rid of title:, bold headers,  get rid of spaces between points
+  function formatMarketingContent(content) {
+    const formattedContent = [];
+    const sectionHeaders = ['Introduction:', '1. Target Audience:', '2. Online Presence and Branding:', '3. Content Marketing:', '4. Collaborations and Partnerships:', '5. Guerrilla Marketing and Street Promotion:', 'Conclusion:'];
+
+    const mainSections = content.split(new RegExp(`(${sectionHeaders.join('|')})`));
+
+    for (let i = 0; i < mainSections.length; i++) {
+      const section = mainSections[i].trim();
+
+      if (sectionHeaders.includes(section)) {
+        formattedContent.push(section);
+      } else {
+        const bulletPoints = section.split('- ').filter((pt) => pt);
+        if (bulletPoints.length > 0) {
+          formattedContent.push(bulletPoints[0].trim());
+          for (let j = 1; j < bulletPoints.length; j++) {
+            formattedContent.push('- ' + bulletPoints[j].trim());
+          }
+        } else {
+          formattedContent.push(section.trim());
+        }
+      }
+    }
+
+    return formattedContent;
+  }
+
+  const formattedContent = formatMarketingContent(marketingPlan.content);
 
   return (
     <div className="px-24 pt-24">
@@ -52,9 +82,13 @@ const Results = () => {
       </div>
       <div className='h-12'></div>
       <div className='bg-white p-8 rounded-md'>
-        <p className='text-black'>
-          {marketingPlan.content}
-        </p>
+        <div>
+          {formattedContent.map((paragraph, index) => (
+            <p key={index} className='text-black mb-4'>
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );
