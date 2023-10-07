@@ -43,19 +43,11 @@ const Results = () => {
   }
 
   return (
-    <div className="px-1 py-4 lg:px-24 lg:pt-24">
-      <div className="flex flex-row">
-        <h1 className="font-black text-4xl">Results</h1>
-        <div className='w-1 lg:w-6'></div>
-        <div className="p-2 bg-green-500 text-white rounded-xl">
-          <p>
-            {marketingPlan.status}
-          </p>
-        </div>
-      </div>
+    <div className="px-4 py-4 lg:px-24 lg:pt-24">
+      <button>download as PDF</button>
       <div className='h-4 lg:h-12'></div>
       <div className='bg-white p-8 rounded-md'>
-        <Markdown className="text-black" children={marketingPlan.content} />
+        <Markdown className="text-black prose lg:prose-xl" children={marketingPlan.content} />
       </div>
     </div>
   );
