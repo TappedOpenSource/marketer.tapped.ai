@@ -17,7 +17,7 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
     setHasInteracted(true);
 
     const { value } = e.target;
-    updateFormData({ ...formData, ['aesthetic_field']: value });
+    updateFormData({ ...formData, ['aesthetic']: value });
     validateForUI(value);
   };
 
@@ -45,8 +45,8 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['aesthetic_field']);
-  }, [formData['aesthetic_field']]);
+    justValidate(formData['aesthetic']);
+  }, [formData['aesthetic']]);
 
   const options = [
     'dreamy waves',
@@ -64,10 +64,10 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
 
         <input
           type="text"
-          name="aesthetic_field"
+          name="aesthetic"
           placeholder="type here..."
           onChange={handleInputChange}
-          value={formData['aesthetic_field'] || ''}
+          value={formData['aesthetic'] || ''}
           className={`white_placeholder w-full appearance-none rounded ${
             error ? 'border-2 border-red-500' : ''
           } bg-[#63b2fd] px-4 py-2 leading-tight text-white focus:bg-white focus:text-black font-semibold focus:outline-none`}
@@ -85,16 +85,16 @@ const AestheticField = ({ formData, updateFormData, onValidation }) => {
               <input
                 type="radio"
                 id={option}
-                name="aesthetic_field"
+                name="aesthetic"
                 value={option}
-                checked={formData['aesthetic_field'] === option}
+                checked={formData['aesthetic'] === option}
                 onChange={handleInputChange}
                 className="sr-only"
               />
               <label
                 htmlFor={option}
                 className={`w-full text-center px-4 py-2 rounded-xl cursor-pointer transition duration-200 ease-in-out 
-                ${formData['aesthetic_field'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
+                ${formData['aesthetic'] === option ? 'bg-white font-bold text-black' : 'bg-[#63b2fd] font-bold text-white'}`}
               >
                 {option}
               </label>

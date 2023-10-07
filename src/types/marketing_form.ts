@@ -1,7 +1,7 @@
 
 export type MarketingForm = {
     id: string;
-    name: string;
+    productName: string;
     socialFollowing: string;
     marketingType: 'single' | 'ep' | 'album';
     moreToCome: string;

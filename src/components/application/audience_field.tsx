@@ -22,8 +22,8 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['audience_field'] || '');
-  }, [formData['audience_field']]);
+    justValidate(formData['audience'] || '');
+  }, [formData['audience']]);
 
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
@@ -43,9 +43,9 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
         <div className="flex h-full w-full items-center justify-center">
           <input
             type="text"
-            name="audience_field"
+            name="audience"
             placeholder="type here..."
-            value={formData['audience_field'] || ''}
+            value={formData['audience'] || ''}
             onChange={handleInputChange}
             className={`white_placeholder w-full appearance-none rounded ${
               error ? 'border-2 border-red-500' : ''
@@ -64,7 +64,7 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: 'teenagers' });
+              updateFormData({ ...formData, audience: 'teenagers' });
               validateForUI('teenagers');
             }}
           >
@@ -73,7 +73,7 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: 'college students' });
+              updateFormData({ ...formData, audience: 'college students' });
               validateForUI('college students');
             }}
           >
@@ -82,7 +82,7 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: 'the suburbs' });
+              updateFormData({ ...formData, audience: 'the suburbs' });
               validateForUI('the suburbs');
             }}
           >
@@ -91,7 +91,7 @@ const AudienceField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, audience_field: 'the city' });
+              updateFormData({ ...formData, audience: 'the city' });
               validateForUI('the city');
             }}
           >

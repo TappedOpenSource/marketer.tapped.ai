@@ -6,6 +6,7 @@ import { checkoutSessionToClientReferenceId } from '@/utils/api';
 import { marketingPlanListener } from '@/utils/database';
 import { redirect, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Markdown from 'react-markdown';
 
 
 const Results = () => {
@@ -82,6 +83,8 @@ const Results = () => {
       </div>
       <div className='h-12'></div>
       <div className='bg-white p-8 rounded-md'>
+        <Markdown className="text-black" children={marketingPlan.content} />
+        <br />
         <div>
           {formattedContent.map((paragraph, index) => (
             <p key={index} className='text-black mb-4'>

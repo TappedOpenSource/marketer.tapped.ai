@@ -31,8 +31,8 @@ const ProductNameField = ({ formData, updateFormData, onValidation }) => {
   };
 
   useEffect(() => {
-    justValidate(formData['product_name'] || '');
-  }, [formData['product_name']]);
+    justValidate(formData['productName'] || '');
+  }, [formData['productName']]);
 
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
@@ -52,9 +52,9 @@ const ProductNameField = ({ formData, updateFormData, onValidation }) => {
         <div className="flex h-full w-full items-center justify-center">
           <input
             type="text"
-            name="product_name"
+            name="productName"
             placeholder="type here..."
-            value={formData['product_name'] || ''}
+            value={formData['productName'] || ''}
             onChange={handleInputChange}
             className={`white_placeholder w-full appearance-none rounded ${
               error ? 'border-2 border-red-500' : ''
@@ -73,7 +73,7 @@ const ProductNameField = ({ formData, updateFormData, onValidation }) => {
           <button
             className="mb-2 px-4 py-2 rounded-xl bg-white text-black font-semibold"
             onClick={() => {
-              updateFormData({ ...formData, product_name: 'untitled' });
+              updateFormData({ ...formData, productName: 'untitled' });
               validateForUI('untitled');
             }}
           >
