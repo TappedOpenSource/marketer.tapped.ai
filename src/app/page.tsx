@@ -63,7 +63,7 @@ export default function Home() {
       <div className="secondCircle hidden md:block"></div>
       <div className="flex-grow flex flex-col justify-center items-center">
         <h1 className="text-4xl md:text-5xl md:w-1/2 my-2 font-extrabold text-white text-center">
-            market your next {word}
+            market your next <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">{word}</span>
         </h1>
         <div className="h-4 md:h-6"></div>
         <h2 className="text-lg md:text-2xl md:w-1/3 font-light my-2 text-center">
