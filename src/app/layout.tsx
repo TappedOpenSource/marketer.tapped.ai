@@ -9,9 +9,10 @@ const rubik = Rubik({
 });
 
 const title = 'Your Personal Marketer';
+const description = 'Get Music Marketing | create a marketing plan for your album, ep, or single | by Tapped Ai';
 export const metadata: Metadata = {
   title,
-  description: 'Get Music Marketing | create a marketing plan for your album, ep, or single | by Tapped Ai',
+  description,
 };
 
 export default function RootLayout({
