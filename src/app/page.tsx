@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-8">
         <Partners />
       </div>
     </main>
