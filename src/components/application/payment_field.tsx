@@ -42,7 +42,7 @@ const PaymentField = ({ formData, updateFormData, onValidation }: {
               onClick={handleButtonClick}
               className='tapped_btn_rounded'
             >
-                pay now
+                claim now
             </button>
           )}
 
