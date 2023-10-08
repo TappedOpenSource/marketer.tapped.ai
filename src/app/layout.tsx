@@ -8,7 +8,7 @@ const rubik = Rubik({
   weight: ['300', '400', '500', '600', '700', '800', '900'],
 });
 
-const title = 'Music Marketing | Tapped Ai';
+const title = 'Your Personal Marketer';
 export const metadata: Metadata = {
   title,
   description: 'Get Music Marketing | create a marketing plan for your album, ep, or single | by Tapped Ai',

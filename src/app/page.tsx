@@ -59,8 +59,9 @@ export default function Home() {
 
   return (
     <main className="relative h-screen flex flex-col blueShapesBackground p-2 md:p-0">
-      <div className="firstCircle hidden md:block"></div>
-      <div className="secondCircle hidden md:block"></div>
+      <div className="firstCircle md:block"></div>
+      <div className="secondCircle md:block"></div>
+      <div className="thirdCircle hidden md:block"></div>
       <div className="flex-grow flex flex-col justify-center items-center">
         <h1 className="text-4xl md:text-5xl md:w-1/2 my-2 font-extrabold text-white text-center">
             market your next <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">{word}</span>
