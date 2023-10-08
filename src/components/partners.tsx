@@ -8,8 +8,9 @@ const Partners = () => {
         IN COLLABORATION WITH:
       </div>
       <Link
-
         href="https://tapped.ai"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Image
           src='/images/tapped_reverse.png'
@@ -20,6 +21,8 @@ const Partners = () => {
       </Link>
       <Link
         href="https://www.deathrowofficial.com/"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Image
           src='/images/drr_logo.jpg'
@@ -31,6 +34,8 @@ const Partners = () => {
 
       <Link
         href="https://www.instagram.com/blankkanvaz/"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Image
           src='/images/bcm_logo.png'
