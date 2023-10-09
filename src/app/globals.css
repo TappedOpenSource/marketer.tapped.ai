@@ -28,6 +28,11 @@ body {
   @apply text-white min-w-[35%] bg-black hover:bg-black/90 focus:ring-4 focus:outline-none focus:ring-[#42a5f5]/50 font-medium rounded-full text-sm px-5 py-2.5 text-center items-center mr-2 mb-2;
 }
 
+.tapped_btn_rounded_blue {
+  margin: 1rem;
+  @apply text-white min-w-[15%] bg-[#63b2fd] hover:bg-black/90 focus:ring-4 focus:outline-none focus:ring-[#42a5f5]/50 font-medium rounded-full text-sm px-5 py-2.5 text-center items-center mr-2 mb-2;
+}
+
 .base-input {
   width: 100%;
   appearance: none;
@@ -90,4 +95,35 @@ body {
   width: 250px;
   height: 250px;
   transform: translateX(-50%);
+}
+
+.markdown-content p, 
+.markdown-content blockquote, 
+.markdown-content pre {
+   page-break-inside: avoid;
+}
+
+.markdown-content ol, 
+.markdown-content ul {
+   page-break-inside: auto;
+}
+
+.markdown-content li {
+   page-break-inside: avoid;
+}
+
+.markdown-content h1:first-child, 
+.markdown-content h2:first-child {
+   page-break-before: auto;
+}
+
+.markdown-content h1, 
+.markdown-content h2 {
+   page-break-before: always;
+   page-break-after: avoid;
+}
+
+.markdown-content p {
+   orphans: 3;
+   widows: 3;
 }
