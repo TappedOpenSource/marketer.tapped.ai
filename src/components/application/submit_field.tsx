@@ -1,27 +1,25 @@
 import { MarketingForm } from '@/types/marketing_form';
 import { createEmptyMarketingPlan, saveForm } from '@/utils/database';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK;
 
-const PaymentField = ({ formData, updateFormData, onValidation }: {
+const SubmitField = ({ formData, updateFormData, onValidation }: {
   formData: MarketingForm;
   updateFormData: (key: string, value: any) => void;
   onValidation: (isValid: boolean) => void;
 }) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleButtonClick = async () => {
     const id = formData.id;
-    const redirectUrl = `${paymentLink}?client_reference_id=${id}`;
-    console.log({ redirectUrl });
-
     await saveForm(formData);
     await createEmptyMarketingPlan({
       clientReferenceId: id,
     });
 
-    window.location.href = redirectUrl;
+    router.push(`/preview?client_reference_id=${id}`);
   };
   return (
     <div style={{ backgroundColor: '#15242d', height: '100vh' }} className="flex items-center justify-center">
@@ -42,7 +40,7 @@ const PaymentField = ({ formData, updateFormData, onValidation }: {
               onClick={handleButtonClick}
               className='tapped_btn_rounded'
             >
-                claim now
+              submit
             </button>
           )}
 
@@ -52,4 +50,4 @@ const PaymentField = ({ formData, updateFormData, onValidation }: {
   );
 };
 
-export default PaymentField;
+export default SubmitField;

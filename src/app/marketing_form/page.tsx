@@ -14,7 +14,7 @@ import AudienceField from '@/components/application/audience_field';
 import LeadingField from '@/components/application/leading_field';
 import TimelineField from '@/components/application/timeline_field';
 import BudgetField from '@/components/application/budget_field';
-import PaymentField from '@/components/application/payment_field';
+import SubmitField from '@/components/application/submit_field';
 import ProductNameField from '@/components/application/product_name_field';
 
 const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK;
@@ -43,7 +43,7 @@ const MarketingForm: NextPage = () => {
     AudienceField,
     TimelineField,
     BudgetField,
-    PaymentField,
+    SubmitField,
   ];
 
   const [pages, setPages] = useState(defaultPages);
@@ -82,7 +82,7 @@ const MarketingForm: NextPage = () => {
     return <h1>Form is empty</h1>;
   }
 
-  const paymentFieldIndex = pages.indexOf(PaymentField);
+  const paymentFieldIndex = pages.indexOf(SubmitField);
   const backgroundColor = currentIndex === paymentFieldIndex ? '#15242d' : '#3ba0fc';
 
   return (
