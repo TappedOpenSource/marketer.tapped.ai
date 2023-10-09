@@ -17,7 +17,10 @@ const Results = () => {
   const clientReferenceId = params.get('client_reference_id');
   const accessCode = params.get('access_code');
 
-  if (!sessionId && !(clientReferenceId && accessCode)) {
+  if (
+    !params.has('session_id') &&
+    !(params.has('client_reference_id') && params.has('access_code'))
+  ) {
     redirect('/');
   }
 
@@ -42,7 +45,7 @@ const Results = () => {
   };
 
   useEffect(() => {
-    if (!sessionId) {
+    if (sessionId !== null) {
       const fetchClientReferenceId = async () => {
         const clientReferenceId = await checkoutSessionToClientReferenceId(sessionId);
         console.log({ clientReferenceId });
@@ -56,7 +59,7 @@ const Results = () => {
 
   useEffect(() => {
     const startListener = async () => {
-      if (clientReferenceId && accessCode) {
+      if ((clientReferenceId !== null) && (accessCode !== null)) {
         const theCode = await getAccessCode(accessCode);
         if (theCode === null) {
           alert(`This access code ${accessCode} does not exist.`);
