@@ -41,7 +41,7 @@ export default function RootLayout({
           property="og:title"
           content={title}
         />
-        <meta property="og:image" content="https://tapped.ai/og.png"></meta>
+        <meta property="og:image" content="https://marketer.tapped.ai/og.png"></meta>
         <meta property="og:url" content="https://tapped.ai"></meta>
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -52,7 +52,7 @@ export default function RootLayout({
           name="twitter:description"
           content={metadata.description}
         />
-        <meta property="twitter:image" content="https://tapped.ai/og.png"></meta>
+        <meta property="twitter:image" content="https://marketer.tapped.ai/og.png"></meta>
       </head>
       <body className={rubik.className}>{children}</body>
       <Analytics />
