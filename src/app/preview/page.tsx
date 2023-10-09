@@ -78,8 +78,8 @@ const Preview = () => {
 
   const headerRegEx = /^#[^#\n]+([\W\w]*?)/gm;
   const subheaderRegEx = /^##[^#\n]+([\W\w]*?)/gm;
-  const headers = marketingPlan?.content.match(headerRegEx);
-  const subheaders = marketingPlan?.content.match(subheaderRegEx);
+  const headers = marketingPlan?.content?.match(headerRegEx) ?? [];
+  const subheaders = marketingPlan?.content?.match(subheaderRegEx) ?? [];
   console.log(headers);
   console.log(subheaders);
 
