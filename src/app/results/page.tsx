@@ -9,7 +9,7 @@ import { redirect, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import PDFDocument from '../../components/PDFDocument';
+import PDFDocument from '@/components/PDFDocument';
 
 const Results = () => {
   const params = useSearchParams();
