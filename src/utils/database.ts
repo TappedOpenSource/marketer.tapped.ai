@@ -4,7 +4,8 @@ import type { MarketingPlan } from '@/types/marketing_plan';
 
 import { doc, collection, setDoc, onSnapshot } from '@firebase/firestore';
 import { db } from '@/utils/firebase';
-import { Timestamp } from 'firebase/firestore';
+import { Timestamp, getDoc, getDocs, limit, query, where } from 'firebase/firestore';
+import { AccessCode } from '@/types/access_code';
 
 const GUEST_PLANS_COLLECTION = 'guestMarketingPlans';
 const FORMS_COLLECTION = 'marketingForms';
@@ -48,4 +49,38 @@ export async function saveForm(form: MarketingForm) {
     console.error(e);
     throw e;
   }
+}
+
+export async function getAccessCode(code: string): Promise<AccessCode | null> {
+  const accessCodeCollection = collection(db, 'accessCodes');
+  const queryRef = query(accessCodeCollection, where('code', '==', code), limit(1));
+  const querySnapshot = await getDocs(queryRef);
+
+  if (querySnapshot.empty) {
+    return null;
+  }
+
+  return querySnapshot.docs[0].data() as AccessCode;
+}
+
+export async function useAccessCode({ code, clientReferenceId }: {
+  code: string;
+  clientReferenceId: string;
+}): Promise<void> {
+  const accessCodeCollection = collection(db, 'accessCodes');
+  const queryRef = query(accessCodeCollection, where('code', '==', code), limit(1));
+  const querySnapshot = await getDocs(queryRef);
+
+  if (querySnapshot.empty) {
+    throw new Error('Access code not found');
+  }
+
+  const docRef = querySnapshot.docs[0].ref;
+  await setDoc(docRef, {
+    used: true,
+    clientReferenceId,
+    usedAt: Timestamp.now(),
+  }, {
+    merge: true,
+  });
 }
