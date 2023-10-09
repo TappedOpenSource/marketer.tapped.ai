@@ -25,7 +25,7 @@ const Partners = () => {
         rel="noopener noreferrer"
       >
         <Image
-          src='/images/drr_logo.jpg'
+          src='/images/drr_logo.png'
           width={75}
           height={75}
           alt='Death row records logo'
