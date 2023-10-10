@@ -64,7 +64,7 @@ const Preview = () => {
     setLoading(false);
   };
 
-  if (marketingPlan === null) {
+  if (marketingPlan === null || marketingPlan.status === 'initial') {
     return (
       <Loading />
     );
