@@ -74,7 +74,7 @@ const Results = () => {
       <PDFDownloadLink
         document={<PDFDocument content={marketingPlan.content} />}
         fileName="marketing_plan.pdf"
-        className="tapped_btn_rounded_blue w-10"
+        className="tapped_btn_rounded_blue w-auto px-4 py-2 text-sm md:text-base"
       >
         {({ loading }) => (loading ? 'Preparing document...' : 'Download as PDF')}
       </PDFDownloadLink>

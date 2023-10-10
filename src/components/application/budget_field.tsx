@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 const BudgetField = ({ formData, updateFormData, onValidation }) => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
+  let product = '';
+
+  if (formData['marketingType'] === 'single') {
+    product = 'single';
+  } else if (formData['marketingType'] === 'EP') {
+    product = 'EP';
+  } else {
+    product = 'album';
+  }
 
   const handleInputChange = (e) => {
     setHasInteracted(true);
@@ -54,6 +63,24 @@ const BudgetField = ({ formData, updateFormData, onValidation }) => {
         <h1 className="mb-2 text-2xl font-bold text-white">
           what is your budget?
         </h1>
+
+        <input
+          type="text"
+          name="budget"
+          placeholder="type here..."
+          onChange={handleInputChange}
+          value={formData['budget'] || ''}
+          className={`white_placeholder w-full appearance-none rounded ${
+            error ? 'border-2 border-red-500' : ''
+          } bg-[#63b2fd] px-4 py-2 leading-tight text-white focus:bg-white focus:text-black font-semibold focus:outline-none`}
+        />
+
+        <div className="grid w-full grid-cols-3 items-center my-4">
+          <div className="h-px bg-gray-300"></div>
+          <span className="text-center text-white">or</span>
+          <div className="h-px bg-gray-300"></div>
+        </div>
+
         <div className="flex flex-wrap w-full justify-between">
           {options.map((option) => (
             <div key={option} className="w-1/2 flex items-center justify-center mb-4 pr-2">
@@ -76,6 +103,7 @@ const BudgetField = ({ formData, updateFormData, onValidation }) => {
             </div>
           ))}
         </div>
+
         {error && <p className="text-red-500">{error}</p>}
       </div>
     </div>
