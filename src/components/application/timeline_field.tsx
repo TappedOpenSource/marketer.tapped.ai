@@ -40,6 +40,8 @@ const TimelineField = ({ formData, updateFormData, onValidation }) => {
   }, [formData['timeline']]);
 
   const options = [
+    'released a week ago',
+    'just released',
     '1 week',
     '2 weeks',
     '1 month',
