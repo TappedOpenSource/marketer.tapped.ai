@@ -54,7 +54,9 @@ export default function RootLayout({
         />
         <meta property="twitter:image" content="https://marketer.tapped.ai/og.png"></meta>
       </head>
-      <body className={rubik.className}>{children}</body>
+      <body className={rubik.className}>
+        {children}
+      </body>
       <Analytics />
     </html>
   );
