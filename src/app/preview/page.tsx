@@ -8,6 +8,7 @@ import Loading from '@/components/loading';
 import Processing from '@/components/processing';
 import Markdown from 'react-markdown';
 import Link from 'next/link';
+import { track } from '@vercel/analytics';
 
 const paymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK;
 
@@ -53,6 +54,10 @@ const Preview = () => {
       setLoading(false);
       return;
     }
+
+    track('submit', {
+      method: 'access-code',
+    });
 
     await useAccessCode({
       code: theCode.toString().toLowerCase(),
