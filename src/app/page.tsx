@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Partners from '@/components/partners';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Processing from '@/components/processing';
 
 export default function Home() {
   const words = [
@@ -57,6 +58,10 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
+
+  return (
+    <Processing />
+  );
 
   return (
     <main className="relative h-screen flex flex-col blueShapesBackground p-2 md:p-0">
