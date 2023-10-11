@@ -36,11 +36,12 @@ const Preview = () => {
     e.preventDefault();
     setLoading(true);
     const formData = new FormData(e.currentTarget);
-    const theCode = formData.get('accessCode');
-    console.log({ code: theCode.toString() });
+    const uppercaseCode = formData.get('accessCode');
+    const theCode = uppercaseCode.toString().toLowerCase();
+    console.log({ code: theCode });
 
     // check if access code exists
-    const accessCode = await getAccessCode(theCode.toString().toLowerCase());
+    const accessCode = await getAccessCode(theCode);
     if (accessCode === null) {
       alert(`This access code ${theCode} does not exist.`);
       setLoading(false);
@@ -60,7 +61,7 @@ const Preview = () => {
     });
 
     await useAccessCode({
-      code: theCode.toString().toLowerCase(),
+      code: theCode,
       clientReferenceId,
     });
 
