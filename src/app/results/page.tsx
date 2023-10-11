@@ -15,7 +15,8 @@ const Results = () => {
   const params = useSearchParams();
   const sessionId = params.get('session_id');
   const clientReferenceId = params.get('client_reference_id');
-  const accessCode = params.get('access_code');
+  const rawAccessCode = params.get('access_code');
+  const accessCode = rawAccessCode?.toString()?.toLowerCase();
 
   if (
     !params.has('session_id') &&
