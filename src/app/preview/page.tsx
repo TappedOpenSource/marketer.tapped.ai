@@ -43,16 +43,16 @@ const Preview = () => {
     // check if access code exists
     const accessCode = await getAccessCode(theCode);
     if (accessCode === null) {
-      alert(`This access code ${theCode} does not exist.`);
       setLoading(false);
+      alert(`This access code ${theCode} does not exist.`);
       return;
     }
 
     // check if access code has been used before
     const alreadyUsed = accessCode.used;
     if (alreadyUsed) {
-      alert(`This access code ${theCode} has already been used.`);
       setLoading(false);
+      alert(`This access code ${theCode} has already been used.`);
       return;
     }
 
