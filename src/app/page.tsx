@@ -60,10 +60,6 @@ export default function Home() {
   }, []);
 
   return (
-    <Processing />
-  );
-
-  return (
     <main className="relative h-screen flex flex-col blueShapesBackground p-2 md:p-0">
       <div className="firstCircle md:block"></div>
       <div className="secondCircle md:block"></div>
