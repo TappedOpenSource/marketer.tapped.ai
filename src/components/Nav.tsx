@@ -69,6 +69,14 @@ const Nav = () => {
                 Social Media
             </Link>
             <Link
+              href='https://getmusicnewsletters.com'
+              target="_blank"
+              rel="noopener noreferrer"
+              className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-blue-500 hover:text-white'
+            >
+                Newsletter
+            </Link>
+            <Link
               href='mailto://support@tapped.ai'
               className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-blue-500 hover:text-white'
             >
