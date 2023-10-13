@@ -5,6 +5,7 @@ import Partners from '@/components/partners';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Processing from '@/components/processing';
+import Nav from '@/components/Nav';
 
 export default function Home() {
   const words = [
@@ -64,15 +65,7 @@ export default function Home() {
       <div className="firstCircle md:block"></div>
       <div className="secondCircle md:block"></div>
       <div className="thirdCircle hidden md:block"></div>
-      <div>
-        <Image
-          height={75}
-          width={75}
-          src='/images/tapped_reverse.png'
-          alt='tapped logo'
-          className='top-8 left-8 absolute z-10'
-        />
-      </div>
+      <Nav />
       <div className="flex-grow flex flex-col justify-center items-center">
         <h1 className="text-4xl md:text-5xl md:w-1/2 my-2 font-extrabold text-white text-center">
             market your next <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">{word}</span>
