@@ -103,11 +103,13 @@ const Preview = () => {
         Take one step closer to being independent and not relying on record labels.
         </p>
         <div>
+          <h1 className='text-center text-3xl'>$9.99</h1>
+          <div className='h-6'></div>
           <Link
             href={paymentUrl}
             className='bg-blue-600 hover:bg-blue-800 text-white font-extrabold py-4 px-6 rounded'
           >
-            BUY FULL PLAN
+            Buy Full Plan
           </Link>
         </div>
         <div className='h-8'></div>
