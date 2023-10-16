@@ -32,7 +32,7 @@ const Nav = () => {
           </span>
         </Link>
         <button
-          className=' inline-flex p-3 hover:bg-blue-500 rounded lg:hidden text-white ml-auto hover:text-white outline-none'
+          className='inline-flex p-3 hover:bg-blue-500 rounded lg:hidden text-white ml-auto hover:text-white outline-none'
           onClick={handleClick}
         >
 
