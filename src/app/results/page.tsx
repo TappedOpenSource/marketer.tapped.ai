@@ -56,7 +56,7 @@ const Results = () => {
       }
     };
     startListener();
-  });
+  }, []);
 
   if (marketingPlan === null) {
     return (
