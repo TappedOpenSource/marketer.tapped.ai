@@ -26,7 +26,7 @@ const Preview = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log({ clientReferenceId });
+    // console.log({ clientReferenceId });
     marketingPlanListener(clientReferenceId, async (marketingPlan) => {
       setMarketingPlan(marketingPlan);
     });

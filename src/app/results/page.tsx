@@ -33,7 +33,7 @@ const Results = () => {
     if (sessionId !== null) {
       const fetchClientReferenceId = async () => {
         const clientReferenceId = await checkoutSessionToClientReferenceId(sessionId);
-        console.log({ clientReferenceId });
+        // console.log({ clientReferenceId });
         marketingPlanListener(clientReferenceId, async (marketingPlan) => {
           setMarketingPlan(marketingPlan);
         });
@@ -51,7 +51,7 @@ const Results = () => {
           return;
         }
 
-        console.log({ clientReferenceId });
+        // console.log({ clientReferenceId });
         marketingPlanListener(clientReferenceId, async (marketingPlan) => {
           setMarketingPlan(marketingPlan);
         });

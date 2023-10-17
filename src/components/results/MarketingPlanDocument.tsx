@@ -4,19 +4,26 @@ import Markdown, { type ExtraProps } from 'react-markdown';
 import AiBlock from './AiBlock';
 
 const MarketingPlanDocument = ({ content }: {
-    content: string;
+  content: string;
 }) => {
   const components = {
     p: (props: ClassAttributes<HTMLParagraphElement> & HTMLAttributes<HTMLParagraphElement> & ExtraProps) => {
       const { node, ...rest } = props;
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const value = node.children[node.children.length-1].value;
+      // console.log({ value });
+
+      if (value === undefined || value === null || value === '') {
+        return <p {...rest} />;
+      }
+
       return (
         <div>
           <p {...rest} />
           <AiBlock
-            title="Marketer"
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            text={node.children[0].value}
+            text={value}
           />
         </div>
       );

@@ -4,7 +4,7 @@ import type { MarketingPlan } from '@/types/marketing_plan';
 
 import { doc, collection, setDoc, onSnapshot } from '@firebase/firestore';
 import { db } from '@/utils/firebase';
-import { Timestamp, getDoc, getDocs, limit, query, where } from 'firebase/firestore';
+import { Timestamp, getDocs, limit, query, where } from 'firebase/firestore';
 import { AccessCode } from '@/types/access_code';
 
 const GUEST_PLANS_COLLECTION = 'guestMarketingPlans';
@@ -14,7 +14,7 @@ export function marketingPlanListener(
   clientReferenceId: string,
   callback: (data: MarketingPlan) => void,
 ) {
-  console.log({ clientReferenceId });
+  // console.log({ clientReferenceId });
   const docRef = doc(db, GUEST_PLANS_COLLECTION, clientReferenceId);
   onSnapshot(docRef, (doc) => {
     const marketingPlan = doc.data() as MarketingPlan;
@@ -26,7 +26,7 @@ export function marketingPlanListener(
 export async function createEmptyMarketingPlan({ clientReferenceId }: {
     clientReferenceId: string;
 }) {
-  console.log({ clientReferenceId });
+  // console.log({ clientReferenceId });
   const marketingPlan: MarketingPlan = {
     clientReferenceId,
     status: 'initial',
