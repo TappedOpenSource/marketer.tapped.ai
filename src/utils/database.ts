@@ -18,7 +18,7 @@ export function marketingPlanListener(
   const docRef = doc(db, GUEST_PLANS_COLLECTION, clientReferenceId);
   onSnapshot(docRef, (doc) => {
     const marketingPlan = doc.data() as MarketingPlan;
-    console.log({ marketingPlan });
+    // console.log({ marketingPlan });
     callback(marketingPlan);
   });
 }
