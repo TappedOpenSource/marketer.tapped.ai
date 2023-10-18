@@ -32,7 +32,7 @@ const MarketingPlanDocument = ({ content }: {
 
   return (
     <>
-      <div className='w-3/4 bg-white p-8 rounded-md'>
+      <div className='md:w-3/4 bg-white p-8 rounded-md'>
         <Markdown
           className="w-full text-black prose lg:prose-xl markdown-content"
           components={components}
