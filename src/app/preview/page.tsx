@@ -49,8 +49,8 @@ const Preview = () => {
     }
 
     // check if access code has been used before
-    const alreadyUsed = accessCode.used;
-    if (alreadyUsed) {
+    const isValid = !accessCode.used || accessCode.permacode;
+    if (!isValid) {
       setLoading(false);
       alert(`This access code ${theCode} has already been used.`);
       return;

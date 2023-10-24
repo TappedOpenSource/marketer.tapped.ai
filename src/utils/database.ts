@@ -60,8 +60,14 @@ export async function getAccessCode(code: string): Promise<AccessCode | null> {
     return null;
   }
 
-  return querySnapshot.docs[0].data() as AccessCode;
+  const dataStuff = querySnapshot.docs[0].data();
+  return {
+    code: dataStuff.code || '',
+    used: dataStuff.used || false,
+    permacode: dataStuff.permacode || false,
+  };
 }
+
 
 export async function useAccessCode({ code, clientReferenceId }: {
   code: string;
