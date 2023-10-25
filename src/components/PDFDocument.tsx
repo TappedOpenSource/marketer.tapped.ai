@@ -2,6 +2,12 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 import MarkdownIt from 'markdown-it';
+import { Rubik } from 'next/font/google';
+
+const rubik = Rubik({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+});
 
 const md = new MarkdownIt();
 
@@ -9,13 +15,13 @@ const styles = StyleSheet.create({
   page: {
     backgroundColor: '#15242d',
     paddingTop: 80,
-    paddingRight: 60,
+    paddingRight: 80,
     paddingBottom: 80,
-    paddingLeft: 60,
+    paddingLeft: 80,
   },
   header1: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 40,
+    fontWeight: 900,
     marginBottom: 20,
     marginTop: 15,
     color: 'white',
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '125%',
+    width: '137%',
     height: '125%',
     zIndex: -1,
   },
