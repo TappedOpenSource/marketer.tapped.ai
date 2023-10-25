@@ -82,9 +82,9 @@ export default function Home() {
           >start now</Link>
           <Link
             href="https://www.loom.com/embed/ff089c94893f42219be46fb37bdfdfdf?sid=839ef7f2-a3fb-4585-9fca-75e38593d6a9"
-            className="text-gray-300 font-bold text-xl rounded-full px-4 py-2 hover:scale-105 transform transition-all duration-200 ease-in-out"
+            className="text-white bg-black font-bold text-xl rounded-full px-4 py-2 hover:scale-105 transform transition-all duration-200 ease-in-out"
           >
-            how to
+            tutorial
           </Link>
         </div>
       </div>
