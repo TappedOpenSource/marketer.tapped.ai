@@ -75,24 +75,19 @@ export default function Home() {
          create a marketing plan for your next project
          just like the majors
         </h2>
-        <div className="my-2 md:my-4 mb-8">
+        <div className="flex flex-col md:flex-row items-center gap-2 my-2 md:my-4 mb-8">
           <Link
             href="/marketing_form"
             className="bg-white text-black font-bold text-xl rounded-full px-4 py-2 hover:scale-105 transform transition-all duration-200 ease-in-out"
           >start now</Link>
+          <Link
+            href="https://www.loom.com/embed/ff089c94893f42219be46fb37bdfdfdf?sid=839ef7f2-a3fb-4585-9fca-75e38593d6a9"
+            className="text-gray-300 font-bold text-xl rounded-full px-4 py-2 hover:scale-105 transform transition-all duration-200 ease-in-out"
+          >
+            how to
+          </Link>
         </div>
       </div>
-
-      <div className="relative w-full md:w-2/5 mx-auto mb-8 overflow-hidden flex items-center justify-center h-[56.25vw] md:h-[380px] min-h-[200px]">
-        <iframe
-          src="https://www.loom.com/embed/ff089c94893f42219be46fb37bdfdfdf?sid=839ef7f2-a3fb-4585-9fca-75e38593d6a9"
-          frameBorder="0"
-          allowFullScreen
-          className="absolute w-full h-full"
-        >
-        </iframe>
-      </div>
-
       <div className="mb-8">
         <Partners />
       </div>
