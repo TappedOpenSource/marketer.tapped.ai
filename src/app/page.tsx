@@ -1,10 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import Partners from '@/components/partners';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Processing from '@/components/processing';
+import Partners from '@/components/partners';
 import Nav from '@/components/Nav';
 
 export default function Home() {
